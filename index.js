@@ -24,11 +24,11 @@ app.post("/removetask", async function(req, res) {
     if (typeof completeTask === "string") {
         await db.completeTodo(completeTask);
         //check if the completed task already exits in the task when checked, then remove it
-        task.splice(task.indexOf(completeTask), 1);
+        completeTask.splice(task.indexOf(completeTask), 1);
     } else if (typeof completeTask === "object") {
         for (var i = 0; i < completeTask.length; i++) {
             await db.completeTodo(completeTask[i]);
-            task.splice(task.indexOf(completeTask[i]), 1);
+            completeTask.splice(task.indexOf(completeTask[i]), 1);
         }
     }
     res.redirect("/");
