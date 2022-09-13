@@ -23,8 +23,6 @@ app.post("/removetask", async function(req, res) {
     //check for the "typeof" the different completed task, then add into the complete task
     if (typeof completeTask === "string") {
         await db.completeTodo(completeTask);
-        //check if the completed task already exits in the task when checked, then remove it
-        completeTask.splice(completeTask.indexOf(completeTask), 1);
     } else if (typeof completeTask === "object") {
         for (var i = 0; i < completeTask.length; i++) {
             await db.completeTodo(completeTask[i]);
